@@ -39,6 +39,7 @@
         align-items: center;
         height: 150px;
         .type-bar{
+            display: flex;
             width: 780px;
             -webkit-box-shadow: 0px 0px 12px 0px rgba(40, 40, 43, 1);
             -moz-box-shadow: 0px 0px 12px 0px rgba(40, 40, 43, 1);
@@ -51,11 +52,10 @@
                 height: 25px;
                 display: flex;
                 align-items: center;
-            }
+            }          
             .user-enter{
-                svg {
-                    font-size: 15px;
-                }
+                height: 25px;
+                width: 25px;
             }
         }
     }

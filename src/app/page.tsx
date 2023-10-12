@@ -18,7 +18,7 @@ export default function Home() {
         </div>
         <div className='user-container'>
           <div className='type-bar'>
-            <div className='user-text'>teskt twoj chatu</div>
+            <div className='user-text'>teskt twoj thrhtrchatu</div>
             <div className='user-enter'><FontAwesomeIcon icon={faCircleRight} /></div>
           </div>
         </div>
