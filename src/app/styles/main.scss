@@ -7,13 +7,51 @@
     width: 250px;
     height: 100vh;
     padding: 8px;
-    .history{
+    font-size: 14px;
+
+    .new-message{
         display: flex;
         justify-content: center;
+        margin-bottom: 15px;
+        height: 45px;
+        .new{
+            flex: 1;
+            margin-right: 8px;
+        }
+        .hide{
+            width: 45px;
+            span {
+                display: flex;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .new-message-element    {
+            display: flex;
+            align-items: center;
+            padding: 4px 12px;
+            border: 1px solid hsla(0,0%,100%,.2);
+            border-radius: 6px;
+ 
+
+        }
+        .plus {
+            width: 14px;
+            margin-right: 12px;
+        }
+    }
+    .history{
+        display: flex;
         align-items: center;
         height: 45px;
         padding: 12px;
         border-radius: 6px;
+
+.fa-message{
+    height: 17px;
+    width: 15px;
+    margin-right: 12px;
+}
     }
 }
 
@@ -38,6 +76,7 @@
         justify-content: center;
         align-items: center;
         height: 150px;
+        
         .type-bar{
             display: flex;
             width: 780px;
@@ -47,11 +86,16 @@
             border-radius: 6px;
             background-color: rgb(64,65,79);
             padding: 16px;
-            padding-right:48px;
+
             .user-text{
+                flex: 1;
+                font-size: 16px;
                 height: 25px;
                 display: flex;
                 align-items: center;
+                border: none;
+                background-color: rgb(64,65,79);
+                color: white;
             }          
             .user-enter{
                 height: 25px;
