@@ -61,14 +61,40 @@
     flex-direction: column;
     height: 100vh;
     .chatgpt-container{
-        display: flex;
-        justify-content: center;
         flex: 1;
+        margin-top: 60px;
         .logo {
+            position: absolute;
             font-size: 35px;
             font-weight: bold;
             color: rgb(86,88,105);
             margin-top: 200px;
+            display: none;
+        }
+        .chatgpt-answears {
+            margin: 0 auto;
+            .background{
+                border-top: 1px solid rgba(32,33,35,.5);
+                padding: 24px 16px;
+                width: 100%;
+            }
+        .bot-color{
+            background-color: rgba(68,70,84);
+        }
+            .text{
+                display: flex;
+                justify-content: center;
+                .avatar{
+                    margin-right: 25px;
+                    img{
+                        border-radius: 2px;
+                    }
+                }
+                .user-text{
+                    width: 650px;
+                    line-height: 24px;
+                }
+            }
         }
     }
     .user-container{
