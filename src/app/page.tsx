@@ -1,6 +1,6 @@
 import './styles/main.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleRight, faPlus, faBars, faMessage} from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from '../../node_modules/@fortawesome/react-fontawesome/index'
+import { faCircleRight, faPlus, faBars, faMessage } from '../../node_modules/@fortawesome/free-solid-svg-icons/index'
 
 export default function Home() {
   return (
@@ -23,7 +23,26 @@ export default function Home() {
         <div className='chatgpt-container'>
           <div className='logo'><span>VoiceGPT</span>
         </div>
-          <div className='chatgpt-answears'></div>
+          <div className='chatgpt-answears'>
+            <div className='user-div'>
+              <div className='avatar'>
+                <img src="https://chat.openai.com/_next/image?url=https%3A%2F%2Fs.gravatar.com%2Favatar%2F70aecedf3e956cb10b3abc299608b1af%3Fs%3D480%26r%3Dpg%26d%3Dhttps%253A%252F%252Fcdn.auth0.com%252Favatars%252Fth.png&w=48&q=75" alt="" height={36}/>
+              </div>
+              <div className='user-text'>
+                <p>mam komponent i jest  w nim przycisk  i chce zeby powodowal to, zeby inny komponent pojawial sie w aplikacji react. jak to zrobic</p>
+              </div>
+            </div>
+          </div>
+          <div className='chatgpt-answears'>
+            <div className='user-div'>
+              <div className='avatar'>
+                <img src="https://chat.openai.com/_next/image?url=https%3A%2F%2Fs.gravatar.com%2Favatar%2F70aecedf3e956cb10b3abc299608b1af%3Fs%3D480%26r%3Dpg%26d%3Dhttps%253A%252F%252Fcdn.auth0.com%252Favatars%252Fth.png&w=48&q=75" alt="" height={36}/>
+              </div>
+              <div className='user-text'>
+                <p>mam komponent i jest  w nim przycisk  i chce zeby powodowal to, zeby inny komponent pojawial sie w aplikacji react. jak to zrobic</p>
+              </div>
+            </div>
+          </div>
         </div>
         <div className='user-container'>
           <div className='type-bar'>
