@@ -1,6 +1,9 @@
+'use client'
+import Submit from '../../components/Submit'
+
 import './styles/main.scss'
 import { FontAwesomeIcon } from '../../node_modules/@fortawesome/react-fontawesome/index'
-import { faCircleRight, faPlus, faBars, faMessage } from '../../node_modules/@fortawesome/free-solid-svg-icons/index'
+import {  faPlus, faBars, faMessage } from '../../node_modules/@fortawesome/free-solid-svg-icons/index'
 
 export default function Home() {
   return (
@@ -87,12 +90,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className='user-container'>
-          <div className='type-bar'>
-            <div className='user-text'><input className='user-text' type='text' placeholder='Start typing...'></input></div>
-            <div className='user-enter'><FontAwesomeIcon icon={faCircleRight} /></div>
-          </div>
-        </div>
+        <Submit />
       </div>
     </div>
   )
