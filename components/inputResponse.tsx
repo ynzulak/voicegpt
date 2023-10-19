@@ -7,7 +7,7 @@ function inputResponse() {
     const [responseMessage, setResponseMessage] = useState('');
   
     const handleMessageSubmit = async () => {
-      const response = await sendMessageToChatGPT(inputMessage);
+      const response: any = await sendMessageToChatGPT(inputMessage);
       setResponseMessage(response);
     };
 
