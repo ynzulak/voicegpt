@@ -15,7 +15,11 @@ function inputResponse() {
     const handleMessageSubmit = async () => {
       const response = await sendMessageToChatGPT(inputMessage);
       setResponseMessage(response);
-      setMessages([...messages, { text: inputMessage, isUser: true }, { text: response, isUser: false }],);
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { text: inputMessage, isUser: true },
+        { text: response, isUser: false },
+      ]);
     };
   return { inputMessage, setInputMessage, responseMessage, setResponseMessage, handleMessageSubmit, messages, setMessages};
 }

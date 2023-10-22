@@ -12,19 +12,13 @@ const Submit = () => {
       console.log(messages);
     }
   };
-
   const ChatAnswears = () => {
     return <Responses inputMessage={inputMessage} responseMessage={responseMessage} />;
   };
 
   return (
     <div className='text-container'>
-        <div className='chatgpt-container'>
-          <div className={inputResponse ? 'logo' : 'logo hidden'}>
-            <span>VoiceGPT</span>
-          </div>
           {ChatAnswears()}
-        </div>
         <div className='user-container'>
         <div className='type-bar'>
           <div className='user-text'>

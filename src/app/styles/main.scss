@@ -61,10 +61,13 @@
     flex-direction: column;
     height: 100vh;
     .chatgpt-container{
+        position: relative;
         flex: 1;
         margin-top: 60px;
         .logo {
             position: absolute;
+            top: 100px;
+            left: 45%;
             font-size: 35px;
             font-weight: bold;
             color: rgb(86,88,105);
