@@ -69,7 +69,6 @@
             font-weight: bold;
             color: rgb(86,88,105);
             margin-top: 200px;
-            display: none;
         }
         .chatgpt-answears {
             margin: 0 auto;
@@ -129,6 +128,10 @@
             }
         }
     }
+}
+
+.hidden {
+    display: none;
 }
 
 .history:hover {

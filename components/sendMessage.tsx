@@ -20,7 +20,8 @@ const sendMessageToChatGPT = async (message: string) => {
         const response = await fetch(API_URL, requestOptions)
         const data = await response.json()
         console.log(data);
-        data.choices[0].message.content;
+        console.log(data.choices[0].message.content);
+        return data.choices[0].message.content;
     } catch (error) {
       console.error(error)
     }
