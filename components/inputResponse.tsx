@@ -20,6 +20,7 @@ function inputResponse() {
         { text: inputMessage, isUser: true },
         { text: response, isUser: false },
       ]);
+      
     };
   return { inputMessage, setInputMessage, responseMessage, setResponseMessage, handleMessageSubmit, messages, setMessages};
 }

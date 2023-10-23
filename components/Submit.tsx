@@ -1,7 +1,9 @@
 import  inputResponse  from "./inputResponse";
-import { FontAwesomeIcon } from "../node_modules/@fortawesome/react-fontawesome/index";
-import { faCircleRight } from "../node_modules/@fortawesome/free-solid-svg-icons/index";
+import History from "./History";
 import Responses from "./Responses";
+
+import { FontAwesomeIcon } from "../node_modules/@fortawesome/react-fontawesome/index";
+import {  faPlus, faBars, faMessage, faCircleRight } from '../node_modules/@fortawesome/free-solid-svg-icons/index'
 
 const Submit = () => {
   const { inputMessage, setInputMessage, responseMessage, setResponseMessage, handleMessageSubmit, messages } = inputResponse();
@@ -15,11 +17,16 @@ const Submit = () => {
   const ChatAnswears = () => {
     return <Responses inputMessage={inputMessage} responseMessage={responseMessage} />;
   };
+  const ChatHistory = () => {
+    return <History inputMessage={inputMessage}/>;
+  };
 
   return (
+    <>
+    {ChatHistory()}
     <div className='text-container'>
-          {ChatAnswears()}
-        <div className='user-container'>
+      {ChatAnswears()}
+      <div className='user-container'>
         <div className='type-bar'>
           <div className='user-text'>
             <input className='user-text' type='text' placeholder='Start typing...' value={inputMessage} onChange={(e) => setInputMessage(e.target.value)}
@@ -28,7 +35,8 @@ const Submit = () => {
           <div className='submit' onClick={handleMessageSubmit}><FontAwesomeIcon icon={faCircleRight} className='submit'/></div>
         </div>
       </div>
-      </div>
+    </div>
+    </>
         );
         
 }
