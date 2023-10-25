@@ -4,9 +4,9 @@ const Responses = ({ inputMessage, responseMessage}: { inputMessage: string; res
 
 return (
     <div className='chatgpt-container'>
-        <div className={responseMessage ? 'logo hidden' : 'logo'}>
+        {!responseMessage && <div className='logo'>
         <span>VoiceGPT</span>
-        </div>
+        </div>}
         <div className={responseMessage ? 'chatgpt-answears': 'chatgpt-answears hidden'}>
         <div className='user-color background'>
         <div className='text'>

@@ -1,5 +1,6 @@
 const API_KEY = process.env.NEXT_PUBLIC_CHAT_GPT
 const API_URL = 'https://api.openai.com/v1/chat/completions';
+
 const sendMessageToChatGPT = async (message: string) => {
   const headers = {
       'Authorization': `Bearer ${API_KEY}`, 
