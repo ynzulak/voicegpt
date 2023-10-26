@@ -1,22 +1,22 @@
 import { useEffect, useState } from "react";
 
-import sendMessageToChatGPT from "./sendMessage";
 
 type MessageType = {
-  text: string;
-  isUser: boolean;
+  title: string;
+  content: string;
+  role: string;
 };
 
-const API_KEY = process.env.NEXT_PUBLIC_CHAT_GPT
-const API_URL = 'https://api.openai.com/v1/chat/completions';
-
 function inputResponse() {
-    const [inputMessage, setInputMessage] = useState('');
-    const [responseMessage, setResponseMessage] = useState('');
+    const [inputMessage, setInputMessage] = useState(null);
+    const [responseMessage, setResponseMessage] = useState(null);
     const [previousChats, setPreviousChats] = useState<MessageType[]>([]);
-    const [currentTitle, setCurrentTitle] = useState([])
-  
-    const handleMessageSubmit = async () => {
+    const [currentTitle, setCurrentTitle] = useState(null)
+    
+    const API_KEY = process.env.NEXT_PUBLIC_CHAT_GPT
+    const API_URL = 'https://api.openai.com/v1/chat/completions';
+    
+    const sendMessageToChatGPT  = async (message: null) => {
       const headers = {
         'Authorization': `Bearer ${API_KEY}`, 
         'Content-Type': 'application/json',
@@ -27,8 +27,9 @@ function inputResponse() {
         headers: headers,
         body: JSON.stringify({ 
           model: 'gpt-3.5-turbo',
-          message: inputMessage,
-          max_tokens: 100,
+          messages: [
+            {  role: 'user',  content: message}],
+            max_tokens: 100,
         }),
       };
   
@@ -36,12 +37,18 @@ function inputResponse() {
           const response = await fetch(API_URL, requestOptions)
           const data = await response.json()
           console.log(data);
-          console.log(data.choices[0].message);
-          setResponseMessage(data.choices[0].message)
+          console.log(data.choices[0].message.content);
+          return data.choices[0].message.content;
       } catch (error) {
         console.error(error)
       }
     };
+
+    const handleMessageSubmit = async () => {
+      const response = await sendMessageToChatGPT(inputMessage);
+      setResponseMessage(response);
+    };
+
     useEffect(() => {
       console.log(currentTitle, inputMessage, responseMessage);
       if(!currentTitle && inputMessage && responseMessage) {
@@ -51,11 +58,11 @@ function inputResponse() {
         setPreviousChats(prevMessages => (
           [...prevMessages, 
             { title: currentTitle, role: 'user',  content: inputMessage},
-            { title: currentTitle, role: responseMessage.role, content: responseMessage.content }]
+            { title: currentTitle, role: 'assistant', content: responseMessage}]
         ),)
       }
     }, [responseMessage, currentTitle])
     console.log(previousChats);
-  return { inputMessage, setInputMessage, responseMessage, setResponseMessage, handleMessageSubmit, previousChats, setPreviousChats};
+  return { inputMessage, setInputMessage, responseMessage, setResponseMessage, handleMessageSubmit, previousChats, setPreviousChats, currentTitle, setCurrentTitle};
 }
 export default inputResponse;

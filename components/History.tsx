@@ -2,12 +2,18 @@ import { FontAwesomeIcon } from "../node_modules/@fortawesome/react-fontawesome/
 import {  faPlus, faBars, faMessage } from '../node_modules/@fortawesome/free-solid-svg-icons/index'
 
 
-const History = ({inputMessage}: { inputMessage: string;}) => {
+const History = ({inputMessage, setInputMessage, setResponseMessage, setCurrentTitle}: { inputMessage: string;}) => {
+
+const createNewChat = () => {
+    setResponseMessage(null)
+    setInputMessage('')
+    setCurrentTitle(null)
+}
 
     return (
     <div className='history-container'>
         <div className='new-message'>
-            <div className='new new-message-element'>
+            <div onClick={createNewChat} className='new new-message-element'>
                 <div className='plus'>
                     <FontAwesomeIcon icon={faPlus} />
                 </div>
