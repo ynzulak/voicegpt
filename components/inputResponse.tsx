@@ -36,7 +36,6 @@ function inputResponse() {
       try {
           const response = await fetch(API_URL, requestOptions)
           const data = await response.json()
-          console.log(data);
           console.log(data.choices[0].message.content);
           return data.choices[0].message.content;
       } catch (error) {
