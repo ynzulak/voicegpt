@@ -25,12 +25,12 @@ const createNewChat = () => {
                 </span>
             </div>
         </div>
-        <div className='history'>
+        {inputMessage && <div className='history'>
             <div className='fa-message'>
                 <FontAwesomeIcon icon={faMessage} />
             </div>
             <span>{inputMessage}</span>
-        </div>
+        </div>}
     </div>
     )
     }
