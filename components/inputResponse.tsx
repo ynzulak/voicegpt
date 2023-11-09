@@ -8,11 +8,13 @@ type MessageType = {
 };
 
 function inputResponse() {
-    const [inputMessage, setInputMessage] = useState(null);
-    const [responseMessage, setResponseMessage] = useState(null);
+    const [inputMessage, setInputMessage] = useState('');
+    const [responseMessage, setResponseMessage] = useState('');
     const [previousChats, setPreviousChats] = useState<MessageType[]>([]);
     const [currentTitle, setCurrentTitle] = useState(null)
     
+
+
     const API_KEY = process.env.NEXT_PUBLIC_CHAT_GPT
     const API_URL = 'https://api.openai.com/v1/chat/completions';
     
@@ -62,6 +64,9 @@ function inputResponse() {
       }
     }, [responseMessage, currentTitle])
     console.log(previousChats);
-  return { inputMessage, setInputMessage, responseMessage, setResponseMessage, handleMessageSubmit, previousChats, setPreviousChats, currentTitle, setCurrentTitle};
+
+    const currentChat = previousChats.filter(previousChat => previousChat.title === currentTitle)
+
+  return { inputMessage, setInputMessage, responseMessage, setResponseMessage, handleMessageSubmit, previousChats, setPreviousChats, currentTitle, setCurrentTitle, currentChat};
 }
 export default inputResponse;
