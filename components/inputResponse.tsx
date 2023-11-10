@@ -66,7 +66,12 @@ function inputResponse() {
     console.log(previousChats);
 
     const currentChat = previousChats.filter(previousChat => previousChat.title === currentTitle)
+    console.log(currentChat);
 
+    currentChat.map((chatMessage, index) =>{
+   console.log(chatMessage.role);
+    }
+    )
   return { inputMessage, setInputMessage, responseMessage, setResponseMessage, handleMessageSubmit, previousChats, setPreviousChats, currentTitle, setCurrentTitle, currentChat};
 }
 export default inputResponse;
