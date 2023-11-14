@@ -7,8 +7,7 @@ import {useChat}  from './ChatContext';
   };
 
 const Responses = () => {
-    const { inputMessage, responseMessage, currentChat, previousChats } = useChat();
-console.log(previousChats);
+    const { responseMessage, previousChats } = useChat();
     
 return (
     <div className='chatgpt-container'>

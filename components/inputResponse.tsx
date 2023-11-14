@@ -60,18 +60,20 @@ function inputResponse() {
         setCurrentTitle(inputMessage)
       }
       if(currentTitle && inputMessage && responseMessage) {
-        setPreviousChats(prevMessages => (
+        setPreviousChats((prevMessages: any) => (
           [...prevMessages, 
             { title: currentTitle, role: 'user',  content: inputMessage},
             { title: currentTitle, role: 'assistant', content: responseMessage}]
         ),)
       }
     }, [responseMessage, currentTitle])
-    console.log(previousChats);
 
-    const currentChat = previousChats.filter(previousChat => previousChat.title === currentTitle)
-    console.log(currentChat);
 
-  return { inputMessage, setInputMessage, responseMessage, setResponseMessage, handleMessageSubmit, previousChats, setPreviousChats, currentTitle, setCurrentTitle, currentChat};
+    const currentChat = previousChats.filter((previousChat: { title: any; }) => previousChat.title === currentTitle)
+
+    const uniqueTitles = Array.from(new Set(previousChats.map((previousChat: { title: any; }) => previousChat.title[0].toUpperCase() + previousChat.title.slice(1))))
+console.log(uniqueTitles);
+
+  return { inputMessage, setInputMessage, responseMessage, setResponseMessage, handleMessageSubmit, previousChats, setPreviousChats, currentTitle, setCurrentTitle, currentChat, uniqueTitles};
 }
 export default inputResponse;

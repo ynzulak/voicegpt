@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "../node_modules/@fortawesome/react-fontawesome/
 import {  faPlus, faBars, faMessage } from '../node_modules/@fortawesome/free-solid-svg-icons/index'
 
 
-const History = ({inputMessage, setInputMessage, setResponseMessage, setCurrentTitle}: { inputMessage: string;}) => {
+const History = ({inputMessage, setInputMessage, setResponseMessage, setCurrentTitle, uniqueTitles}: { inputMessage: string;}) => {
 
 const createNewChat = () => {
     setResponseMessage(null)
@@ -29,7 +29,7 @@ const createNewChat = () => {
             <div className='fa-message'>
                 <FontAwesomeIcon icon={faMessage} />
             </div>
-            <span>{inputMessage}</span>
+            <span>{uniqueTitles}</span>
         </div>}
     </div>
     )
