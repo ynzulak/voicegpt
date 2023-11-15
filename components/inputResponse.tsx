@@ -55,7 +55,6 @@ function inputResponse() {
     };
 
     useEffect(() => {
-      console.log(currentTitle, inputMessage, responseMessage);
       if(!currentTitle && inputMessage && responseMessage) {
         setCurrentTitle(inputMessage)
       }
@@ -68,12 +67,12 @@ function inputResponse() {
       }
     }, [responseMessage, currentTitle])
 
+console.log(previousChats);
 
     const currentChat = previousChats.filter((previousChat: { title: any; }) => previousChat.title === currentTitle)
 
-    const uniqueTitles = Array.from(new Set(previousChats.map((previousChat: { title: any; }) => previousChat.title[0].toUpperCase() + previousChat.title.slice(1))))
-console.log(uniqueTitles);
+    
 
-  return { inputMessage, setInputMessage, responseMessage, setResponseMessage, handleMessageSubmit, previousChats, setPreviousChats, currentTitle, setCurrentTitle, currentChat, uniqueTitles};
+  return { inputMessage, setInputMessage, responseMessage, setResponseMessage, handleMessageSubmit, previousChats, setPreviousChats, currentTitle, setCurrentTitle, currentChat};
 }
 export default inputResponse;

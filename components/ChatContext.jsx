@@ -4,7 +4,7 @@ const ChatContext = createContext();
 
 export const ChatProvider = ({ children }) => {
   const [inputMessage, setInputMessage] = useState('');
-  const [responseMessage, setResponseMessage] = useState('');
+  const [responseMessage, setResponseMessage] = useState(null);
   const [previousChats, setPreviousChats] = useState([]);
   const [currentTitle, setCurrentTitle] = useState(null);
 

@@ -1,14 +1,27 @@
+import { useChat } from "./ChatContext";
+
 import { FontAwesomeIcon } from "../node_modules/@fortawesome/react-fontawesome/index";
 import {  faPlus, faBars, faMessage } from '../node_modules/@fortawesome/free-solid-svg-icons/index'
 
 
-const History = ({inputMessage, setInputMessage, setResponseMessage, setCurrentTitle, uniqueTitles}: { inputMessage: string;}) => {
+const History = () => {
+    const { inputMessage, previousChats, setInputMessage, setResponseMessage, setCurrentTitle, responseMessage } = useChat();
 
-const createNewChat = () => {
-    setResponseMessage(null)
-    setInputMessage('')
-    setCurrentTitle(null)
-}
+
+    const uniqueTitles = Array.from(new Set(previousChats.map((previousChat: { title: any; }) => previousChat.title[0].toUpperCase() + previousChat.title.slice(1))))
+
+    
+    const createNewChat = () => {
+        setResponseMessage(null)
+        setInputMessage('')
+        setCurrentTitle(null)
+    }
+    const handleClick = (uniqueTitle) => {
+        setCurrentTitle(uniqueTitle)
+        setResponseMessage(null)
+        setInputMessage('')
+    }
+    console.log(uniqueTitles);
 
     return (
     <div className='history-container'>
@@ -25,12 +38,15 @@ const createNewChat = () => {
                 </span>
             </div>
         </div>
-        {inputMessage && <div className='history'>
-            <div className='fa-message'>
-                <FontAwesomeIcon icon={faMessage} />
+        {uniqueTitles?.map((uniqueTitle, index) =>
+            <div className='history' key={index} onClick={() => handleClick(uniqueTitle)}>
+                <div className='fa-message'>
+                    <FontAwesomeIcon icon={faMessage} />
+                </div>
+                <span>{uniqueTitle}</span>
             </div>
-            <span>{uniqueTitles}</span>
-        </div>}
+            )
+        }
     </div>
     )
     }

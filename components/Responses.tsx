@@ -7,15 +7,17 @@ import {useChat}  from './ChatContext';
   };
 
 const Responses = () => {
-    const { responseMessage, previousChats } = useChat();
+    const { responseMessage, previousChats, currentTitle} = useChat();
+    
+    const currentChat = previousChats.filter((previousChat: { title: any; }) => previousChat.title === currentTitle)
     
 return (
     <div className='chatgpt-container'>
-        {!responseMessage && <div className='logo'>
+        {!currentTitle && <div className='logo'>
         <span>VoiceGPT</span>
         </div>}
-        <div className={responseMessage ? 'chatgpt-answears': 'chatgpt-answears hidden'}>
-            {previousChats?.map((chatMessage: ChatMessage, index: Key) =>
+        <div className='chatgpt-answears'>
+            {currentChat?.map((chatMessage, index) =>
           <div
           key={index}
           className={chatMessage.role === 'user' ? 'user-color background' : 'bot-color background'}
@@ -33,7 +35,7 @@ return (
               />
             </div>
             <div className='user-text'>
-            <p>{chatMessage.role === 'user' ? chatMessage.content : chatMessage.content}</p>
+            <p>{chatMessage.content}</p>
             </div>
           </div>
         </div>
