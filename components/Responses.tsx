@@ -1,23 +1,18 @@
 import { ReactElement, JSXElementConstructor, ReactNode, Key } from 'react';
 import {useChat}  from './ChatContext';
- type ChatMessage = {
-    title: string;
-    role: 'user' | 'assistant';
-    content: string;
-  };
 
 const Responses = () => {
-    const { responseMessage, previousChats, currentTitle} = useChat();
+    const { previousChats, currentTitle} = useChat();
     
     const currentChat = previousChats.filter((previousChat: { title: any; }) => previousChat.title === currentTitle)
-    
+
 return (
     <div className='chatgpt-container'>
         {!currentTitle && <div className='logo'>
         <span>VoiceGPT</span>
         </div>}
         <div className='chatgpt-answears'>
-            {currentChat?.map((chatMessage, index) =>
+            {currentChat?.map((chatMessage: { role: string; content: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined; }, index: Key | null | undefined) =>
           <div
           key={index}
           className={chatMessage.role === 'user' ? 'user-color background' : 'bot-color background'}
@@ -35,7 +30,7 @@ return (
               />
             </div>
             <div className='user-text'>
-            <p>{chatMessage.content}</p>
+            <p>{chatMessage.role === 'user' ? chatMessage.content : chatMessage.content}</p>
             </div>
           </div>
         </div>

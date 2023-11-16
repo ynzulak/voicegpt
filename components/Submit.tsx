@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "../node_modules/@fortawesome/react-fontawesome/
 import {  faPlus, faBars, faMessage, faCircleRight } from '../node_modules/@fortawesome/free-solid-svg-icons/index'
 
 const Submit = () => {
-  const { inputMessage, setInputMessage, responseMessage, setPureviousChats, handleMessageSubmit, previousChats, currentTitle, setCurrentTitle, setResponseMessage, setPreviousChats, currentChat } = inputResponse();
+  const { inputMessage, setInputMessage, responseMessage, handleMessageSubmit, previousChats, currentTitle, setCurrentTitle, setResponseMessage, setPreviousChats } = inputResponse();
   
   const handleKeyPress = (event: any) => {
     if (event.key === 'Enter') {

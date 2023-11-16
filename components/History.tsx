@@ -5,10 +5,9 @@ import {  faPlus, faBars, faMessage } from '../node_modules/@fortawesome/free-so
 
 
 const History = () => {
-    const { inputMessage, previousChats, setInputMessage, setResponseMessage, setCurrentTitle, responseMessage } = useChat();
+    const {  previousChats, setInputMessage, setResponseMessage, setCurrentTitle } = useChat()
 
-
-    const uniqueTitles = Array.from(new Set(previousChats.map((previousChat: { title: any; }) => previousChat.title[0].toUpperCase() + previousChat.title.slice(1))))
+    const uniqueTitles = Array.from(new Set(previousChats.map((previousChat: { title: any; }) => previousChat.title)))
 
     
     const createNewChat = () => {
@@ -16,13 +15,13 @@ const History = () => {
         setInputMessage('')
         setCurrentTitle(null)
     }
-    const handleClick = (uniqueTitle) => {
+    const handleClick = (uniqueTitle: string) => {
         setCurrentTitle(uniqueTitle)
         setResponseMessage(null)
         setInputMessage('')
     }
-    console.log(uniqueTitles);
 
+    
     return (
     <div className='history-container'>
         <div className='new-message'>
@@ -43,7 +42,7 @@ const History = () => {
                 <div className='fa-message'>
                     <FontAwesomeIcon icon={faMessage} />
                 </div>
-                <span>{uniqueTitle}</span>
+                <span>{(uniqueTitle.charAt(0).toUpperCase() + uniqueTitle.slice(1))}</span>
             </div>
             )
         }
