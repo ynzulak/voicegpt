@@ -8,6 +8,7 @@
     height: 100vh;
     padding: 8px;
     font-size: 14px;
+    overflow: auto;
 
     .new-message{
         display: flex;
@@ -56,6 +57,7 @@
         position: relative;
         flex: 1;
         margin-top: 60px;
+        overflow-y: auto;
         .logo {
             position: absolute;
             top: 100px;

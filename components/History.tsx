@@ -9,7 +9,8 @@ const History = () => {
 
     const uniqueTitles = Array.from(new Set(previousChats.map((previousChat: { title: any; }) => previousChat.title)))
 
-    
+    console.log(uniqueTitles);
+
     const createNewChat = () => {
         setResponseMessage(null)
         setInputMessage('')
@@ -42,7 +43,12 @@ const History = () => {
                 <div className='fa-message'>
                     <FontAwesomeIcon icon={faMessage} />
                 </div>
-                <span>{(uniqueTitle.charAt(0).toUpperCase() + uniqueTitle.slice(1))}</span>
+                <span>    {uniqueTitle && uniqueTitle.length > 25 ? (
+                            `${uniqueTitle.slice(0, 20).charAt(0).toUpperCase() + uniqueTitle.slice(12)}...`
+                        ) : (
+                            uniqueTitle.charAt(0).toUpperCase() + uniqueTitle.slice(1)
+                        )}
+                </span>
             </div>
             )
         }

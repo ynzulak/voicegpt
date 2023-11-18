@@ -3,7 +3,7 @@ import History from "./History";
 import Responses from "./Responses";
 
 import { FontAwesomeIcon } from "../node_modules/@fortawesome/react-fontawesome/index";
-import {  faPlus, faBars, faMessage, faCircleRight } from '../node_modules/@fortawesome/free-solid-svg-icons/index'
+import { faCircleRight } from '../node_modules/@fortawesome/free-solid-svg-icons/index'
 
 const Submit = () => {
   const { inputMessage, setInputMessage, responseMessage, handleMessageSubmit, previousChats, currentTitle, setCurrentTitle, setResponseMessage, setPreviousChats } = inputResponse();
@@ -13,6 +13,7 @@ const Submit = () => {
       handleMessageSubmit();
     }
   };
+
   const ChatAnswears = () => {
     return <Responses inputMessage={inputMessage} responseMessage={responseMessage}/>;
   };
