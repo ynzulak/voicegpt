@@ -17,6 +17,8 @@ function inputResponse() {
     setPreviousChats,
     currentTitle,
     setCurrentTitle,
+    loading,
+    setLoading
   } = useChat();
 
     const API_KEY = process.env.NEXT_PUBLIC_CHAT_GPT
@@ -35,16 +37,18 @@ function inputResponse() {
           model: 'gpt-3.5-turbo',
           messages: [
             {  role: 'user',  content: message}],
-            max_tokens: 100,
         }),
       };
   
       try {
+        setLoading(true)
           const response = await fetch(API_URL, requestOptions)
           const data = await response.json()
           console.log(data.choices[0].message.content);
-          return data.choices[0].message.content;
+          setLoading(false)
+          return data.choices[0].message.content
       } catch (error) {
+        setLoading(false)
         console.error(error)
       }
     };

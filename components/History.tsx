@@ -4,12 +4,11 @@ import { FontAwesomeIcon } from "../node_modules/@fortawesome/react-fontawesome/
 import {  faPlus, faBars, faMessage } from '../node_modules/@fortawesome/free-solid-svg-icons/index'
 
 
+
 const History = () => {
     const {  previousChats, setInputMessage, setResponseMessage, setCurrentTitle } = useChat()
 
     const uniqueTitles = Array.from(new Set(previousChats.map((previousChat: { title: any; }) => previousChat.title)))
-
-    console.log(uniqueTitles);
 
     const createNewChat = () => {
         setResponseMessage(null)
@@ -31,11 +30,6 @@ const History = () => {
                     <FontAwesomeIcon icon={faPlus} />
                 </div>
                 <span>New message</span>
-            </div>
-            <div className='new-message-element'>
-                <span>
-                    <FontAwesomeIcon icon={faBars} />
-                </span>
             </div>
         </div>
         {uniqueTitles?.map((uniqueTitle, index) =>

@@ -1,8 +1,9 @@
 import { ReactElement, JSXElementConstructor, ReactNode, Key } from 'react';
+import BeatLoader from '../node_modules/react-spinners/BeatLoader';
 import {useChat}  from './ChatContext';
 
 const Responses = () => {
-    const { previousChats, currentTitle} = useChat();
+    const { previousChats, currentTitle, loading} = useChat();
     
     const currentChat = previousChats.filter((previousChat: { title: any; }) => previousChat.title === currentTitle)
 
@@ -35,6 +36,7 @@ return (
           </div>
         </div>
             )}
+            <div className='loading-state'>{loading ? <><BeatLoader color="#74aa9c" /></> : <></>}</div>
     </div>
   </div>
 )
