@@ -18,7 +18,9 @@ function inputResponse() {
     currentTitle,
     setCurrentTitle,
     loading,
-    setLoading
+    setLoading,
+    chatHistory, 
+    setChatHistory
   } = useChat();
 
     const API_KEY = process.env.NEXT_PUBLIC_CHAT_GPT
@@ -56,6 +58,11 @@ function inputResponse() {
     const handleMessageSubmit = async () => {
       const response = await sendMessageToChatGPT(inputMessage);
       setResponseMessage(response);
+      setChatHistory(prevHistory => [
+        ...prevHistory,
+        { title: currentTitle, content: inputMessage, role: 'user' },
+        { title: currentTitle, content: response, role: 'assistant' }
+      ]);
     };
 
     useEffect(() => {
