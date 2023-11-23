@@ -7,7 +7,6 @@ export const ChatProvider = ({ children }) => {
   const [responseMessage, setResponseMessage] = useState(null);
   const [previousChats, setPreviousChats] = useState([]);
   const [currentTitle, setCurrentTitle] = useState(null);
-  const [chatHistory, setChatHistory] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const value = {
@@ -21,8 +20,6 @@ export const ChatProvider = ({ children }) => {
     setCurrentTitle, 
     loading, 
     setLoading,
-    chatHistory, 
-    setChatHistory
   };
 
   return <ChatContext.Provider value={value}>{children}</ChatContext.Provider>;

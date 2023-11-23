@@ -19,14 +19,13 @@ function inputResponse() {
     setCurrentTitle,
     loading,
     setLoading,
-    chatHistory, 
-    setChatHistory
   } = useChat();
-
+  
     const API_KEY = process.env.NEXT_PUBLIC_CHAT_GPT
     const API_URL = 'https://api.openai.com/v1/chat/completions';
     
-    const sendMessageToChatGPT  = async (message: null) => {
+        
+    const sendMessageToChatGPT  = async (message: string | null) => {
       const headers = {
         'Authorization': `Bearer ${API_KEY}`, 
         'Content-Type': 'application/json',
@@ -38,7 +37,9 @@ function inputResponse() {
         body: JSON.stringify({ 
           model: 'gpt-3.5-turbo',
           messages: [
-            {  role: 'user',  content: message}],
+            ...previousChats, 
+            { role: 'user', content: message },
+          ],
         }),
       };
   
@@ -58,11 +59,19 @@ function inputResponse() {
     const handleMessageSubmit = async () => {
       const response = await sendMessageToChatGPT(inputMessage);
       setResponseMessage(response);
-      setChatHistory(prevHistory => [
-        ...prevHistory,
-        { title: currentTitle, content: inputMessage, role: 'user' },
-        { title: currentTitle, content: response, role: 'assistant' }
-      ]);
+  
+      // Pamiętanie ostatniej wiadomości jako tytuł
+      if (!currentTitle && inputMessage && response) {
+        setCurrentTitle(inputMessage);
+      }
+      // Aktualizacja historii rozmów
+      if (currentTitle && inputMessage && response) {
+        setPreviousChats((prevMessages: any) => [
+          ...prevMessages,
+          { title: currentTitle, role: 'user', content: inputMessage },
+          { title: currentTitle, role: 'assistant', content: response },
+        ]);
+      }
     };
 
     useEffect(() => {
