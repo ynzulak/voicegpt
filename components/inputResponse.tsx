@@ -88,17 +88,17 @@ function inputResponse() {
     };
     
     useEffect(() => {
-      if (!currentTitle && inputMessage && responseMessage) {
-        setCurrentTitle(inputMessage);
+      if(!currentTitle && inputMessage && responseMessage) {
+        setCurrentTitle(inputMessage)
       }
-      if (currentTitle && inputMessage && responseMessage) {
-        setPreviousChats((prevMessages: any) => [
-          ...prevMessages,
-          { title: currentTitle, role: 'user', content: inputMessage },
-          { title: currentTitle, role: 'assistant', content: responseMessage },
-        ]);
+      if(currentTitle && inputMessage && responseMessage) {
+        setPreviousChats((prevMessages: any) => (
+          [...prevMessages, 
+            { title: currentTitle, role: 'user',  content: inputMessage},
+            { title: currentTitle, role: 'assistant', content: responseMessage}]
+        ),)
       }
-    }, [responseMessage, currentTitle]);
+    }, [responseMessage, currentTitle])
 console.log(previousChats);
 
   return { inputMessage, setInputMessage, responseMessage, setResponseMessage, handleMessageSubmit, previousChats, setPreviousChats, currentTitle, setCurrentTitle};
