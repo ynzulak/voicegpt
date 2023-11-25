@@ -8,10 +8,9 @@ import {  faPlus, faBars, faMessage } from '../node_modules/@fortawesome/free-so
 const History = () => {
     const {  previousChats, setInputMessage, setResponseMessage, setCurrentTitle, setPreviousChats } = useChat()
 
-    const uniqueTitles = Array.from(new Set(previousChats.map((previousChat: { title: any; }) => previousChat.title)))
+    const uniqueTitles: string[] = Array.from(new Set(previousChats.map((previousChat: { title: any; }) => previousChat.title)))
 
     const createNewChat = () => {
-        
         setResponseMessage(null)
         setInputMessage('')
         setCurrentTitle(null)

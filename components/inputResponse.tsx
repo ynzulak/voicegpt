@@ -64,42 +64,52 @@ function inputResponse() {
     };
 
     const handleMessageSubmit = async () => {
-      const chatHistory: MessageType[] = [
-        ...previousChats,
-        { role: 'user', content: inputMessage },
-      ];
-
-      const response = await sendMessageToChatGPT(inputMessage, chatHistory);
+      const response = await sendMessageToChatGPT(inputMessage, previousChats);
       setResponseMessage(response);
     
       if (!currentTitle && inputMessage && response) {
         setCurrentTitle(inputMessage);
       }
-      
-  if (currentTitle && inputMessage && response) {
-    setPreviousChats((prevChats: any) => [
-      ...prevChats,
-      ...chatHistory,
-      { title: currentTitle, role: 'assistant', content: response },
-    ]);
-  }
 
-  setCurrentChatHistory(chatHistory);
+const userMessageExists = previousChats.some(
+  (message) => message.role === 'user' && message.content === inputMessage
+);
+const assistantMessageExists = previousChats.some(
+  (message) => message.role === 'assistant' && message.content === response
+);
+
+if (!userMessageExists && !assistantMessageExists && currentTitle && inputMessage && response) {
+  setPreviousChats((prevMessages: any) => [
+    ...prevMessages,
+    { title: currentTitle, role: 'user', content: inputMessage },
+    { title: currentTitle, role: 'assistant', content: response },
+  ]);
+}
     };
     
     useEffect(() => {
-      if(!currentTitle && inputMessage && responseMessage) {
-        setCurrentTitle(inputMessage)
+      if (!currentTitle && inputMessage && responseMessage) {
+        setCurrentTitle(inputMessage);
       }
-      if(currentTitle && inputMessage && responseMessage) {
-        setPreviousChats((prevMessages: any) => (
-          [...prevMessages, 
-            { title: currentTitle, role: 'user',  content: inputMessage},
-            { title: currentTitle, role: 'assistant', content: responseMessage}]
-        ),)
+    
+      
+      const userMessageExists = previousChats.some(
+        (message) => message.role === 'user' && message.content === inputMessage
+      );
+      const assistantMessageExists = previousChats.some(
+        (message) => message.role === 'assistant' && message.content === responseMessage
+      );
+    
+      if (!userMessageExists && !assistantMessageExists && currentTitle && inputMessage && responseMessage) {
+        setPreviousChats((prevMessages: any) => [
+          ...prevMessages,
+          { title: currentTitle, role: 'user', content: inputMessage },
+          { title: currentTitle, role: 'assistant', content: responseMessage },
+        ]);
       }
-    }, [responseMessage, currentTitle])
-console.log(previousChats);
+    }, [responseMessage, currentTitle]);
+    
+  console.log(previousChats);
 
   return { inputMessage, setInputMessage, responseMessage, setResponseMessage, handleMessageSubmit, previousChats, setPreviousChats, currentTitle, setCurrentTitle};
 }
