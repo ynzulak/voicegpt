@@ -26,7 +26,7 @@ return (
                     ? 'https://chat.openai.com/_next/image?url=https%3A%2F%2Fs.gravatar.com%2Favatar%2F70aecedf3e956cb10b3abc299608b1af%3Fs%3D480%26r%3Dpg%26d%3Dhttps%253A%252F%252Fcdn.auth0.com%252Favatars%252Fth.png&w=48&q=75'
                     : 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg'
                 }
-                alt=''
+                alt={chatMessage.role === 'user' ? 'User image' : 'ChatGPT image'}
                 height={36}
               />
             </div>

@@ -7,7 +7,7 @@ type MessageType = {
   role: string;
 };
 
-function inputResponse() {
+const InputMessage = () => {
   const {
     inputMessage,
     setInputMessage,
@@ -109,4 +109,4 @@ function inputResponse() {
 
   return { inputMessage, setInputMessage, responseMessage, setResponseMessage, handleMessageSubmit, previousChats, setPreviousChats, currentTitle, setCurrentTitle};
 }
-export default inputResponse;
+export default InputMessage;
