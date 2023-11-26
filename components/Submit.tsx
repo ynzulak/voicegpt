@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "../node_modules/@fortawesome/react-fontawesome/
 import { faCircleRight } from '../node_modules/@fortawesome/free-solid-svg-icons/index'
 
 const Submit = () => {
-  const { inputMessage, setInputMessage, responseMessage, handleMessageSubmit, previousChats, currentTitle, setCurrentTitle, setResponseMessage, setPreviousChats } = inputResponse();
+  const { inputMessage, setInputMessage, handleMessageSubmit} = inputResponse();
   
   const handleKeyPress = (event: any) => {
     if (event.key === 'Enter') {
@@ -14,18 +14,11 @@ const Submit = () => {
     }
   };
 
-  const ChatAnswears = () => {
-    return <Responses inputMessage={inputMessage} responseMessage={responseMessage}/>;
-  };
-  const ChatHistory = () => {
-    return <History inputMessage={inputMessage} setInputMessage={setInputMessage} setCurrentTitle={setCurrentTitle} setResponseMessage={setResponseMessage}/>;
-  };
-
   return (
     <>
-    {ChatHistory()}
+    <History />
     <div className='text-container'>
-      {ChatAnswears()}
+    <Responses />
       <div className='user-container'>
         <div className='type-bar'>
           <div className='user-text'>
