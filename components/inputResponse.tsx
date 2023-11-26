@@ -72,10 +72,10 @@ function inputResponse() {
       }
 
 const userMessageExists = previousChats.some(
-  (message) => message.role === 'user' && message.content === inputMessage
+  (message: any) => message.role === 'user' && message.content === inputMessage
 );
 const assistantMessageExists = previousChats.some(
-  (message) => message.role === 'assistant' && message.content === response
+  (message: any) => message.role === 'assistant' && message.content === response
 );
 
 if (!userMessageExists && !assistantMessageExists && currentTitle && inputMessage && response) {
@@ -94,10 +94,10 @@ if (!userMessageExists && !assistantMessageExists && currentTitle && inputMessag
     
       
       const userMessageExists = previousChats.some(
-        (message) => message.role === 'user' && message.content === inputMessage
+        (message: any) => message.role === 'user' && message.content === inputMessage
       );
       const assistantMessageExists = previousChats.some(
-        (message) => message.role === 'assistant' && message.content === responseMessage
+        (message: any) => message.role === 'assistant' && message.content === responseMessage
       );
     
       if (!userMessageExists && !assistantMessageExists && currentTitle && inputMessage && responseMessage) {
