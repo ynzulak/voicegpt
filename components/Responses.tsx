@@ -10,7 +10,7 @@ const Responses = () => {
 return (
     <div className='chatgpt-container'>
         {!currentTitle && <div className='logo'>
-        <span>VoiceGPT</span>
+        <span>CloneGPT</span>
         </div>}
         <div className='chatgpt-answears'>
             {currentChat?.map((chatMessage: { role: string; content: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined; }, index: Key | null | undefined) =>
