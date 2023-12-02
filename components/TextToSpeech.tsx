@@ -1,25 +1,21 @@
 import fs from "fs";
 import path from "path";
 import OpenAI from "openai";
-import { useChat } from "./ChatContext";
 
-const apiKey = process.env.NEXT_PUBLIC_CHAT_GPT;
-const openai = new OpenAI({apiKey});
+const API_KEY = process.env.NEXT_PUBLIC_CHAT_GPT
 
-const speechFile = path.resolve(`./${Date()}.mp3`);
+const openai = new OpenAI({apiKey: API_KEY, dangerouslyAllowBrowser: true});
+const speechFile = path.resolve("./speech.mp3");
 
-const TextToSpeech = async() =>{
-    const {
-        responseMessage,
-      } = useChat();
-    const mp3 = await openai.audio.speech.create({
-      model: "tts-1",
-      voice: "alloy",
-      input: 'siema',
-    });
-    console.log(speechFile);
-    const buffer = Buffer.from(await mp3.arrayBuffer());
-    await fs.promises.writeFile(speechFile, buffer);
-  }
-  TextToSpeech()
+async function TextToSpeech() {
+  const mp3 = await openai.audio.speech.create({
+    model: "tts-1",
+    voice: "alloy",
+    input: '',
+  });
+  console.log(speechFile);
+  const buffer = Buffer.from(await mp3.arrayBuffer());
+  await fs.promises.writeFile(speechFile, buffer);
+}
+
 export default TextToSpeech

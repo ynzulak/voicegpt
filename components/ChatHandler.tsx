@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import {useChat}  from './ChatContext';
 
-import TextToSpeech from './TextToSpeech'
-
 type MessageType = {
   title: string;
   content: string;
@@ -25,8 +23,7 @@ const ChatHandler = () => {
 
     const API_KEY = process.env.NEXT_PUBLIC_CHAT_GPT
     const API_URL = 'https://api.openai.com/v1/chat/completions';
-    
-        
+
     const sendMessageToChatGPT = async (message: string | null, chatHistory: MessageType[]) => {
       const headers = {
         'Authorization': `Bearer ${API_KEY}`,
@@ -86,8 +83,8 @@ const ChatHandler = () => {
         ]);
       }
     };
-    
     useEffect(() => {
+      
       if (!currentTitle && inputMessage && responseMessage) {
         setCurrentTitle(inputMessage);
       }
