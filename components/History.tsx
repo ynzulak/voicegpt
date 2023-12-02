@@ -1,12 +1,12 @@
 import { useChat } from "./ChatContext";
 
 import { FontAwesomeIcon } from "../node_modules/@fortawesome/react-fontawesome/index";
-import {  faPlus, faBars, faMessage } from '../node_modules/@fortawesome/free-solid-svg-icons/index'
+import {  faPlus, faMessage } from '../node_modules/@fortawesome/free-solid-svg-icons/index'
 
 
 
 const History = () => {
-    const {  previousChats, setInputMessage, setResponseMessage, setCurrentTitle, setPreviousChats } = useChat()
+    const {  previousChats, setInputMessage, setResponseMessage, setCurrentTitle } = useChat()
 
     const uniqueTitles: string[] = Array.from(new Set(previousChats.map((previousChat: { title: any; }) => previousChat.title)))
 

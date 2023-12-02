@@ -1,13 +1,15 @@
 import { useEffect } from "react";
 import {useChat}  from './ChatContext';
 
+import TextToSpeech from './TextToSpeech'
+
 type MessageType = {
   title: string;
   content: string;
   role: string;
 };
 
-const InputMessage = () => {
+const ChatHandler = () => {
   const {
     inputMessage,
     setInputMessage,
@@ -109,4 +111,4 @@ const InputMessage = () => {
 
   return { inputMessage, setInputMessage, responseMessage, setResponseMessage, handleMessageSubmit, previousChats, setPreviousChats, currentTitle, setCurrentTitle};
 }
-export default InputMessage;
+export default ChatHandler;

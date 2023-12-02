@@ -1,16 +1,18 @@
-import  inputResponse  from "./inputResponse";
+import  ChatHandler  from "./ChatHandler";
 import History from "./History";
 import Responses from "./Responses";
 
 import { FontAwesomeIcon } from "../node_modules/@fortawesome/react-fontawesome/index";
 import { faCircleRight } from '../node_modules/@fortawesome/free-solid-svg-icons/index'
+import TextToSpeech from "./TextToSpeech";
 
 const Submit = () => {
-  const { inputMessage, setInputMessage, handleMessageSubmit} = inputResponse();
+  const { inputMessage, setInputMessage, handleMessageSubmit} = ChatHandler();
   
   const handleKeyPress = (event: any) => {
     if (event.key === 'Enter') {
       handleMessageSubmit();
+      TextToSpeech()
     }
   };
 
