@@ -12,7 +12,6 @@ const Submit = () => {
   const handleKeyPress = (event: any) => {
     if (event.key === 'Enter') {
       handleMessageSubmit();
-      TextToSpeech()
     }
   };
 
