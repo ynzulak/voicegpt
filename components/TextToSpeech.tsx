@@ -5,7 +5,7 @@ import OpenAI from "openai";
 const API_KEY = process.env.NEXT_PUBLIC_CHAT_GPT
 
 const openai = new OpenAI({apiKey: API_KEY, dangerouslyAllowBrowser: true});
-const speechFile = path.resolve("./speech.mp3");
+
 
 async function TextToSpeech() {
   const mp3 = await openai.audio.speech.create({
