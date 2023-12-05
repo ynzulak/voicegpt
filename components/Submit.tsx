@@ -1,10 +1,10 @@
 import  ChatHandler  from "./ChatHandler";
 import History from "./History";
 import Responses from "./Responses";
+import SpeechComponent from "./SpeechComponent";
 
 import { FontAwesomeIcon } from "../node_modules/@fortawesome/react-fontawesome/index";
-import { faCircleRight } from '../node_modules/@fortawesome/free-solid-svg-icons/index'
-import TextToSpeech from "./TextToSpeech";
+import { faCircleRight, faVolumeHigh } from '../node_modules/@fortawesome/free-solid-svg-icons/index'
 
 const Submit = () => {
   const { inputMessage, setInputMessage, handleMessageSubmit} = ChatHandler();
@@ -19,6 +19,7 @@ const Submit = () => {
     <>
     <History />
     <div className='text-container'>
+    <SpeechComponent/>
     <Responses />
       <div className='user-container'>
         <div className='type-bar'>

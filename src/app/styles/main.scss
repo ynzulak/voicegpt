@@ -52,6 +52,16 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
+    .speech-container{
+        position: absolute;
+        margin: 14px 30px;
+        .speech-icon{
+            svg {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
     .chatgpt-container{
         position: relative;
         flex: 1;
