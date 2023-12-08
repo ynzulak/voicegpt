@@ -2,6 +2,7 @@ import  ChatHandler  from "./ChatHandler";
 import History from "./History";
 import Responses from "./Responses";
 import SpeechComponent from "./SpeechComponent";
+import SpeechToText from "./SpeechToText";
 
 import { FontAwesomeIcon } from "../node_modules/@fortawesome/react-fontawesome/index";
 import { faCircleRight, faVolumeHigh } from '../node_modules/@fortawesome/free-solid-svg-icons/index'
@@ -21,6 +22,7 @@ const Submit = () => {
     <div className='text-container'>
     <SpeechComponent/>
     <Responses />
+    <SpeechToText />
       <div className='user-container'>
         <div className='type-bar'>
           <div className='user-text'>

@@ -1,4 +1,5 @@
 'use client'
+import '@babel/polyfill';
 import Submit from '../../components/Submit'
 import { ChatProvider } from '../../components/ChatContext'
 
