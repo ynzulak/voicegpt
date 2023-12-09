@@ -2,29 +2,39 @@ import { useState } from "react";
 
 const SpeechToText = () => {
   const [transcript, setTranscript] = useState('');
-  const recognition = new window.webkitSpeechRecognition(); // Tworzymy nową instancję rozpoznawania mowy
-
-  recognition.lang = 'en-US'; // Ustawiamy język rozpoznawania (tu angielski amerykański)
-
-  recognition.onresult = event => {
-    const currentTranscript = event.results[0][0].transcript;
-    setTranscript(currentTranscript); // Ustawiamy rozpoznany tekst w stanie komponentu
-  };
+  let recognition = null;
 
   const startListening = () => {
-    recognition.start(); // Rozpoczynamy nasłuchiwanie
+    if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+      recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = 'en-US';
+      
+      recognition.onresult = event => {
+        const currentTranscript = event.results[0][0].transcript;
+        setTranscript(currentTranscript);
+      };
+
+      recognition.start();
+    } else {
+      console.log("Przeglądarka nie obsługuje rozpoznawania mowy.");
+    }
   };
 
   const stopListening = () => {
-    recognition.stop(); // Zatrzymujemy nasłuchiwanie
+    if (recognition) {
+      recognition.stop();
+    }
   };
-console.log(transcript);
+
+  console.log(transcript);
+
   return (
     <div>
       <button onClick={startListening}>Start</button>
       <button onClick={stopListening}>Stop</button>
-      <p>{transcript}</p> {/* Wyświetlamy rozpoznany tekst */}
+      <p>{transcript}</p>
     </div>
   );
 };
-export default SpeechToText;
+
+export default SpeechToText
