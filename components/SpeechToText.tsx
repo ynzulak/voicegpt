@@ -2,21 +2,22 @@ import { useState } from "react";
 
 const SpeechToText = () => {
   const [transcript, setTranscript] = useState('');
-  let recognition = null;
+  const [noSupport, setNoSupport] = useState('');
+  let recognition: any = null;
 
   const startListening = () => {
     if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
       recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
       recognition.lang = 'en-US';
       
-      recognition.onresult = event => {
+      recognition.onresult = (event: { results: { transcript: any; }[][]; }) => {
         const currentTranscript = event.results[0][0].transcript;
         setTranscript(currentTranscript);
       };
 
       recognition.start();
     } else {
-      console.log("Przeglądarka nie obsługuje rozpoznawania mowy.");
+      setNoSupport("Twoja przeglądarka nie obsługuje rozpoznawania mowy.");
     }
   };
 
@@ -32,9 +33,10 @@ const SpeechToText = () => {
     <div>
       <button onClick={startListening}>Start</button>
       <button onClick={stopListening}>Stop</button>
-      <p>{transcript}</p>
+      {noSupport && <p>{noSupport}</p>}
+      {transcript && <p>{transcript}</p>}
     </div>
   );
 };
 
-export default SpeechToText
+export default SpeechToText;
