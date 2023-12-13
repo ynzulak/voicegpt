@@ -122,6 +122,31 @@
             border-radius: 6px;
             background-color: rgb(64,65,79);
             padding: 16px;
+            
+            .speech-recognition{
+                display: flex;
+
+                .no-support-modal {
+                    display: flex;          
+                    align-items: center;
+                    flex-direction: column;
+                    width: 700px;
+                    height: 110px;
+                    background-color: rgb(64,65,79);
+                    bottom: 55%;
+                    left: 37%;
+                    position: absolute;
+                    padding: 20px 0;
+                    .modal-text {
+                        padding-bottom: 25px
+                    }
+                    .ok-button {
+                        height: 100px;
+                        width: 50px;
+                        background-color: #fff;
+                    }
+                }
+            }
 
             .user-text{
                 flex: 1;

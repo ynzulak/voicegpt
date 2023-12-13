@@ -22,9 +22,9 @@ const Submit = () => {
     <div className='text-container'>
     <SpeechComponent/>
     <Responses />
-    <SpeechToText />
       <div className='user-container'>
         <div className='type-bar'>
+        <SpeechToText />
           <div className='user-text'>
             <input className='user-text' type='text' placeholder='Start typing...' value={inputMessage} onChange={(e) => setInputMessage(e.target.value)}
             onKeyPress={handleKeyPress}/>
