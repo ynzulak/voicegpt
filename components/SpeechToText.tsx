@@ -7,10 +7,10 @@ const SpeechToText = () => {
   const [isSpeech, setIsSpeech] = useState(false);
   const [transcript, setTranscript] = useState('');
   const [noSupport, setNoSupport] = useState('');
+  const [showModal, setShowModal] = useState(true);
   let recognition: any = null;
 
   const handleClick = () => {
-    setIsSpeech(!isSpeech);
     if (!isSpeech) {
       startListening();
     } else {
@@ -29,9 +29,10 @@ const SpeechToText = () => {
       };
 
       recognition.onend = () => {
-        setIsSpeech(false);
+        
       };
 
+      setIsSpeech(true)
       recognition.start();
     } else {
       setNoSupport("Your browser does not support speech recognition. Try using browser like Chrome or Safari");
@@ -39,9 +40,15 @@ const SpeechToText = () => {
   };
 
   const stopListening = () => {
+    setIsSpeech(false);
     if (recognition) {
       recognition.stop();
+      recognition = null; 
     }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   console.log(transcript);
@@ -55,13 +62,12 @@ const SpeechToText = () => {
           <FontAwesomeIcon icon={faMicrophoneSlash} />
         )}
       </div>
-      <div className="no-support-modal">
+      {noSupport && showModal &&(<div className="no-support-modal">
         <div className="modal-text">
           <p>Your browser does not support speech recognition. Try using browser like Chrome or Safari</p>
         </div>
-        <button className="ok-button">Ok</button>
-      </div>
-      {noSupport && <div className="no-support"><p>{noSupport}</p></div>}
+        <button className="ok-button" onClick={closeModal}>Ok</button>
+      </div>)}
       {transcript && <p>{transcript}</p>}
     </div>
   );
