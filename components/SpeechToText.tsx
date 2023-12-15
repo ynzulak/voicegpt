@@ -1,13 +1,21 @@
 import { useEffect, useState } from "react";
+import { useChat } from "./ChatContext";
 
 import { FontAwesomeIcon } from "../node_modules/@fortawesome/react-fontawesome/index";
 import { faMicrophone, faMicrophoneSlash} from '../node_modules/@fortawesome/free-solid-svg-icons/index'
 
 const SpeechToText = () => {
-  const [isSpeech, setIsSpeech] = useState(false);
-  const [transcript, setTranscript] = useState('');
-  const [noSupport, setNoSupport] = useState('');
-  const [showModal, setShowModal] = useState(true);
+  const { 
+    isSpeech, 
+    setIsSpeech,
+    transcript, 
+    setTranscript,
+    noSupport, 
+    setNoSupport,
+    showModal, 
+    setShowModal
+  } = useChat()
+
   let recognition: any = null;
 
   const handleClick = () => {
@@ -29,7 +37,7 @@ const SpeechToText = () => {
       };
 
       recognition.onend = () => {
-        
+        setIsSpeech(false);
       };
 
       setIsSpeech(true)
@@ -51,8 +59,6 @@ const SpeechToText = () => {
     setShowModal(false);
   };
 
-  console.log(transcript);
-
   return (
     <div className="speech-recognition">
       <div className="microphone" onClick={handleClick}>
@@ -68,7 +74,6 @@ const SpeechToText = () => {
         </div>
         <button className="ok-button" onClick={closeModal}>Ok</button>
       </div>)}
-      {transcript && <p>{transcript}</p>}
     </div>
   );
 };

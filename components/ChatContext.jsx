@@ -8,6 +8,10 @@ export const ChatProvider = ({ children }) => {
   const [previousChats, setPreviousChats] = useState([]);
   const [currentTitle, setCurrentTitle] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [isSpeech, setIsSpeech] = useState(false);
+  const [transcript, setTranscript] = useState('');
+  const [noSupport, setNoSupport] = useState('');
+  const [showModal, setShowModal] = useState(true);
 
   const value = {
     inputMessage,
@@ -20,6 +24,14 @@ export const ChatProvider = ({ children }) => {
     setCurrentTitle, 
     loading, 
     setLoading,
+    isSpeech, 
+    setIsSpeech,
+    transcript, 
+    setTranscript,
+    noSupport, 
+    setNoSupport,
+    showModal, 
+    setShowModal
   };
 
   return <ChatContext.Provider value={value}>{children}</ChatContext.Provider>;
