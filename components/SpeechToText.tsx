@@ -8,7 +8,6 @@ const SpeechToText = () => {
   const { 
     isSpeech, 
     setIsSpeech,
-    transcript, 
     setTranscript,
     noSupport, 
     setNoSupport,

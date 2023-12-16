@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "../node_modules/@fortawesome/react-fontawesome/
 import { faCircleRight, faVolumeHigh } from '../node_modules/@fortawesome/free-solid-svg-icons/index'
 import { useChat } from "./ChatContext";
 import { useEffect } from "react";
+import LanguageComponent from "./LanguageComponent";
 
 const Submit = () => {
   const { inputMessage, setInputMessage, handleMessageSubmit, } = ChatHandler();
@@ -42,14 +43,12 @@ const Submit = () => {
   };
   
 
-console.log(transcript);
-console.log(inputMessage);
-
   return (
     <>
     <History />
     <div className='text-container'>
     <SpeechComponent/>
+    <LanguageComponent/>
     <Responses />
       <div className='user-container'>
         <div className='type-bar'>
