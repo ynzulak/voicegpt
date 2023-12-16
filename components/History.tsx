@@ -38,7 +38,7 @@ const History = () => {
                     <FontAwesomeIcon icon={faMessage} />
                 </div>
                 <span>    {uniqueTitle && uniqueTitle.length > 25 ? (
-                            `${uniqueTitle.slice(0, 20).charAt(0).toUpperCase() + uniqueTitle.slice(12)}...`
+                            `${uniqueTitle.slice(0, 20).charAt(0).toUpperCase() + uniqueTitle.slice(1)}...`
                         ) : (
                             uniqueTitle.charAt(0).toUpperCase() + uniqueTitle.slice(1)
                         )}

@@ -20,6 +20,7 @@ const SpeechComponent = () => {
     try {
       if (responseMessage) {
             const utterance = new SpeechSynthesisUtterance(responseMessage);
+            utterance.lang = 'en';
             window.speechSynthesis.speak(utterance);
           }
         } catch (error) {
