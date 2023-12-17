@@ -12,6 +12,8 @@ export const ChatProvider = ({ children }) => {
   const [transcript, setTranscript] = useState('');
   const [noSupport, setNoSupport] = useState('');
   const [showModal, setShowModal] = useState(true);
+  const [noLanguage, setNoLanguage] = useState(true);
+  const [language, setLanguage] = useState('');
 
   const value = {
     inputMessage,
@@ -31,7 +33,11 @@ export const ChatProvider = ({ children }) => {
     noSupport, 
     setNoSupport,
     showModal, 
-    setShowModal
+    setShowModal, 
+    language, 
+    setLanguage,
+    noLanguage, 
+    setNoLanguage
   };
 
   return <ChatContext.Provider value={value}>{children}</ChatContext.Provider>;

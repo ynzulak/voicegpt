@@ -12,8 +12,13 @@ const SpeechToText = () => {
     noSupport, 
     setNoSupport,
     showModal, 
-    setShowModal
+    setShowModal,
+    language,
+    noLanguage, 
+    setNoLanguage
   } = useChat()
+
+  console.log(language);
 
   let recognition: any = null;
 
@@ -28,7 +33,14 @@ const SpeechToText = () => {
   const startListening = () => {
     if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
       recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-      recognition.lang = 'en-US';
+      if(language == 'english') {
+        recognition.lang = 'en-US';
+      }else if (language == 'polish'){
+        recognition.lang = 'pl-PL';
+      } else {
+        recognition.lang = '';
+        setNoLanguage('Select your language if you want to use voice recognition')
+      }
       
       recognition.onresult = (event: { results: { transcript: any; }[][]; }) => {
         const currentTranscript = event.results[0][0].transcript;
@@ -70,6 +82,12 @@ const SpeechToText = () => {
       {noSupport && showModal &&(<div className="no-support-modal">
         <div className="modal-text">
           <p>Your browser does not support speech recognition. Try using browser like Chrome or Safari</p>
+        </div>
+        <button className="ok-button" onClick={closeModal}>Ok</button>
+      </div>)}
+      {noLanguage && showModal &&(<div className="no-support-modal">
+        <div className="modal-text">
+          <p>Select your language if you want to use voice recognition or text to speech compontent</p>
         </div>
         <button className="ok-button" onClick={closeModal}>Ok</button>
       </div>)}

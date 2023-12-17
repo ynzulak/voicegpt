@@ -6,14 +6,24 @@ import { faLanguage } from '../node_modules/@fortawesome/free-solid-svg-icons/in
 
 const LanguageComponent = () => {
 
-const [showModal, setShowModal] = useState(false)
+  const { 
+    language, 
+    setLanguage,
+    noLanguage
+  } = useChat()
 
-const handleClick = () => {
-    setShowModal(true)
-}
-const closeModal = () => {
-    setShowModal(false);
-  };
+  const [showModal, setShowModal] = useState(false)
+
+  const changeLanguage = (language: string) => {
+    setLanguage(language)
+  }
+
+  const handleClick = () => {
+      setShowModal(true)
+  }
+  const closeModal = () => {
+      setShowModal(false);
+    };
 
   return (
     <>
@@ -26,8 +36,8 @@ const closeModal = () => {
             <div className="modal-text">
                 <p>Select language</p>
                 <div className="languages">
-                <p>Polish</p>
-                <p>English</p>
+                <div onClick={() => changeLanguage('polish')}><p>Polish</p></div>
+                <div onClick={() => changeLanguage('english')}><p>English</p></div>
                 </div>
             </div>
             <button className="ok-button" onClick={closeModal}>Ok</button>

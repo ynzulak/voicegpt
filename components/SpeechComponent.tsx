@@ -10,6 +10,9 @@ const SpeechComponent = () => {
 
     const {
         responseMessage,
+        language,
+        setNoLanguage,
+        noLanguage
       } = useChat();
 
     const handleClick = () => {
@@ -20,7 +23,15 @@ const SpeechComponent = () => {
     try {
       if (responseMessage) {
             const utterance = new SpeechSynthesisUtterance(responseMessage);
-            utterance.lang = 'en';
+            if(language == 'english') {
+              utterance.lang = 'en-US';
+            }else if (language == 'polish'){
+              utterance.lang = 'pl-PL'
+              console.log('siema');
+            } else {
+              utterance.lang = '';
+              setNoLanguage('Select your language if you want to use text to speech component')
+            }
             window.speechSynthesis.speak(utterance);
           }
         } catch (error) {
@@ -29,7 +40,7 @@ const SpeechComponent = () => {
       };
 
       useEffect(() => {
-        if (!isSpeech){
+        if (isSpeech){
           handleTextToSpeech()
         }
       },[responseMessage])
@@ -39,7 +50,7 @@ return (
     <div className="speech-container">
         <div className='speech-icon' onClick={handleClick}>
           {isSpeech ?
-            <FontAwesomeIcon icon={faVolumeXmark} /> : <FontAwesomeIcon icon={faVolumeHigh}/>}
+            <FontAwesomeIcon icon={faVolumeHigh} /> : <FontAwesomeIcon icon={faVolumeXmark}/>}
         </div>
     </div>
     </>
