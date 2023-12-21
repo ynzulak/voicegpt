@@ -51,7 +51,6 @@ const ChatHandler = () => {
         setLoading(true);
         const response = await fetch(API_URL, requestOptions);
         const data = await response.json();
-        console.log(data.choices[0].message.content);
         setLoading(false);
         return data.choices[0].message.content;
       } catch (error) {
@@ -84,7 +83,6 @@ const ChatHandler = () => {
       }
     };
     useEffect(() => {
-      
       if (!currentTitle && inputMessage && responseMessage) {
         setCurrentTitle(inputMessage);
       }
