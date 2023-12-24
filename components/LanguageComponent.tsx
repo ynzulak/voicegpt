@@ -66,7 +66,7 @@ const LanguageComponent = () => {
           <button className="ok-button" onClick={closeModal}>Ok</button>
         </div>
   </div>)}
-          </div>
+  </div>
     </>
   );
 };
