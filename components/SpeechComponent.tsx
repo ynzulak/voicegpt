@@ -27,7 +27,6 @@ const SpeechComponent = () => {
               utterance.lang = 'en-US';
             }else if (language == 'polish'){
               utterance.lang = 'pl-PL'
-              console.log('siema');
             } else {
               utterance.lang = '';
               setNoLanguage('Select your language if you want to use text to speech component')

@@ -13,9 +13,11 @@ const LanguageComponent = () => {
   } = useChat()
 
   const [showModal, setShowModal] = useState(false)
+  const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);;
 
   const changeLanguage = (language: string) => {
     setLanguage(language)
+    setSelectedLanguage(language)
   }
 
   const handleClick = () => {
@@ -24,6 +26,7 @@ const LanguageComponent = () => {
   const closeModal = () => {
       setShowModal(false);
     };
+  
 
   return (
     <>
@@ -32,17 +35,38 @@ const LanguageComponent = () => {
             <FontAwesomeIcon icon={faLanguage} /> 
         </div>
         {showModal &&
-        (<div className="language-modal">
-            <div className="modal-text">
-                <p>Select language</p>
-                <div className="languages">
-                <div onClick={() => changeLanguage('polish')}><p>Polish</p></div>
-                <div onClick={() => changeLanguage('english')}><p>English</p></div>
-                </div>
+        (    <div className="language-modal">
+        <div className="modal-text">
+          <div className="modal-title">
+            <p>Select language</p></div>
+            <div className="languages">
+            <div
+              className={
+                selectedLanguage === "polish"
+                  ? "language-active language"
+                  : "language"
+              }
+              onClick={() => changeLanguage("polish")}
+            >
+              <p>Polish 🇵🇱</p>
             </div>
-            <button className="ok-button" onClick={closeModal}>Ok</button>
-      </div>)}
-    </div>
+            <div
+              className={
+                selectedLanguage === "english"
+                  ? "language-active language"
+                  : "language"
+              }
+              onClick={() => changeLanguage("english")}
+            >
+              <p>English 🏴󠁧󠁢󠁥󠁮󠁧󠁿</p>
+            </div>
+          </div>
+        </div>
+        <div className="close-modal">
+          <button className="ok-button" onClick={closeModal}>Ok</button>
+        </div>
+  </div>)}
+          </div>
     </>
   );
 };
