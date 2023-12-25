@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useChat } from "./ChatContext";
 
+import NoLanguage from "./noLanguage";
+
 import { FontAwesomeIcon } from "../node_modules/@fortawesome/react-fontawesome/index";
 import { faMicrophone, faMicrophoneSlash} from '../node_modules/@fortawesome/free-solid-svg-icons/index'
 
@@ -21,14 +23,20 @@ const SpeechToText = () => {
   console.log(language);
 
   let recognition: any = null;
-
+  
   const handleClick = () => {
-    if (!isSpeech) {
-      startListening();
+    if (language === '') {
+      setNoLanguage(true);
+      setShowModal(true); 
     } else {
-      stopListening();
+      if (!isSpeech) {
+        startListening();
+      } else {
+        stopListening();
+      }
     }
   };
+
 
   const startListening = () => {
     if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
@@ -39,7 +47,6 @@ const SpeechToText = () => {
         recognition.lang = 'pl-PL';
       } else {
         recognition.lang = '';
-        setNoLanguage('Select your language if you want to use voice recognition')
       }
       
       recognition.onresult = (event: { results: { transcript: any; }[][]; }) => {
@@ -85,12 +92,7 @@ const SpeechToText = () => {
         </div>
         <button className="ok-button" onClick={closeModal}>Ok</button>
       </div>)}
-      {noLanguage && showModal &&(<div className="no-support-modal">
-        <div className="modal-text">
-          <p>Select your language if you want to use voice recognition or text to speech compontent</p>
-        </div>
-        <button className="ok-button" onClick={closeModal}>Ok</button>
-      </div>)}
+      {noLanguage && showModal &&(<NoLanguage />)}
     </div>
   );
 };

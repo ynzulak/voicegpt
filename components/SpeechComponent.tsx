@@ -12,12 +12,18 @@ const SpeechComponent = () => {
         responseMessage,
         language,
         setNoLanguage,
-        noLanguage
+        showModal, 
+        setShowModal,
       } = useChat();
-
+      
     const handleClick = () => {
-      setIsSpeech(!isSpeech)
-    }
+      if (language === '') {
+        setNoLanguage(true);
+        setShowModal(true); 
+      } else {
+        setIsSpeech(!isSpeech)
+      }
+    };
 
     const handleTextToSpeech = async () => {
     try {
@@ -29,7 +35,6 @@ const SpeechComponent = () => {
               utterance.lang = 'pl-PL'
             } else {
               utterance.lang = '';
-              setNoLanguage('Select your language if you want to use text to speech component')
             }
             window.speechSynthesis.speak(utterance);
           }
