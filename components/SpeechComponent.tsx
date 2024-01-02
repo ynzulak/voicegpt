@@ -12,7 +12,6 @@ const SpeechComponent = () => {
         responseMessage,
         language,
         setNoLanguage,
-        showModal, 
         setShowModal,
       } = useChat();
       
