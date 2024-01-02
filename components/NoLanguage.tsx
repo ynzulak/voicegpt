@@ -1,7 +1,7 @@
 import { useChat } from "./ChatContext"
 
 
-const noLanguageComponent = () => {
+const NoLanguageComponent = () => {
     const { 
         isSpeech, 
         setIsSpeech,
@@ -30,4 +30,4 @@ const noLanguageComponent = () => {
     )
 }
 
-export default noLanguageComponent
+export default NoLanguageComponent

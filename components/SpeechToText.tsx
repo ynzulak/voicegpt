@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useChat } from "./ChatContext";
 
-import NoLanguage from "./noLanguage";
+import NoLanguage from "./NoLanguage";
 
 import { FontAwesomeIcon } from "../node_modules/@fortawesome/react-fontawesome/index";
 import { faMicrophone, faMicrophoneSlash} from '../node_modules/@fortawesome/free-solid-svg-icons/index'
@@ -20,7 +20,6 @@ const SpeechToText = () => {
     setNoLanguage
   } = useChat()
 
-  console.log(language);
 
   let recognition: any = null;
   
@@ -76,6 +75,8 @@ const SpeechToText = () => {
   const closeModal = () => {
     setShowModal(false);
   };
+
+  
 
   return (
     <div className="speech-recognition">
