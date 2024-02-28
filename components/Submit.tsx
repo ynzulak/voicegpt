@@ -1,6 +1,7 @@
 import  ChatHandler  from "./ChatHandler";
 import History from "./History";
 import Responses from "./Responses";
+import BurgerComponent from "./BurgerComponent";
 import SpeechComponent from "./SpeechComponent";
 import SpeechToText from "./SpeechToText";
 
@@ -47,6 +48,7 @@ const Submit = () => {
     <>
     <History />
     <div className='text-container'>
+    <BurgerComponent/>
     <SpeechComponent/>
     <LanguageComponent/>
     <Responses />

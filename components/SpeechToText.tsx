@@ -18,8 +18,6 @@ const SpeechToText = () => {
     setNoLanguage
   } = useChat()
 
-  console.log(language);
-
   let recognition: any = null;
 
   const handleClick = () => {

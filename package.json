@@ -15,12 +15,14 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "axios": "^1.5.1",
     "dotenv": "^16.3.1",
+    "hamburger-react": "^2.5.0",
     "next": "13.5.4",
     "openai": "^4.20.1",
     "react": "^18",
     "react-dom": "^18",
     "react-speech-recognition": "^3.10.0",
     "react-spinners": "^0.13.8",
+    "react-transition-group": "^4.4.5",
     "sass": "^1.69.3"
   },
   "devDependencies": {
@@ -28,6 +30,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/react-speech-recognition": "^3.9.5",
+    "@types/react-transition-group": "^4.4.10",
     "eslint": "^8",
     "eslint-config-next": "13.5.4",
     "typescript": "^5"

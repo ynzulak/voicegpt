@@ -3,6 +3,7 @@ import { createContext, useContext, useState } from 'react';
 const ChatContext = createContext();
 
 export const ChatProvider = ({ children }) => {
+  const [isOpen, setIsOpen ] = useState(false)
   const [inputMessage, setInputMessage] = useState('');
   const [responseMessage, setResponseMessage] = useState(null);
   const [previousChats, setPreviousChats] = useState([]);
@@ -37,7 +38,9 @@ export const ChatProvider = ({ children }) => {
     language, 
     setLanguage,
     noLanguage, 
-    setNoLanguage
+    setNoLanguage,
+    isOpen,
+    setIsOpen 
   };
 
   return <ChatContext.Provider value={value}>{children}</ChatContext.Provider>;
