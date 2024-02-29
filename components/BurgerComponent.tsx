@@ -8,8 +8,6 @@ import {  faPlus, faMessage, faBars } from '@fortawesome/free-solid-svg-icons'
 
 const BurgerComponent = () => {
     const { isOpen, setIsOpen} = useChat()
-    
-
 
     const handleClick = () => {
       setIsOpen(true)

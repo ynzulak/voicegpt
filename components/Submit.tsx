@@ -48,20 +48,20 @@ const Submit = () => {
     <>
     <History />
     <div className='text-container'>
-    <BurgerComponent/>
-    <SpeechComponent/>
-    <LanguageComponent/>
-    <Responses />
-      <div className='user-container'>
-        <div className='type-bar'>
-        <SpeechToText />
-          <div className='user-text'>
-            <input className='user-text' type='text' placeholder='Start typing...' value={isSpeech ? transcript : inputMessage} onChange={handleInputChange}
-            onKeyPress={handleKeyPress}/>
+      <BurgerComponent/>
+      <SpeechComponent/>
+      <LanguageComponent/>
+      <Responses />
+        <div className='user-container'>
+          <div className='type-bar'>
+            <SpeechToText />
+            <div className='user-text'>
+              <input className='user-text' type='text' placeholder='Start typing...' value={isSpeech ? transcript : inputMessage} onChange={handleInputChange}
+              onKeyPress={handleKeyPress}/>
+            </div>
+            <div className='submit' onClick={handleMessageSubmit}><FontAwesomeIcon icon={faCircleRight} className='submit'/></div>
           </div>
-          <div className='submit' onClick={handleMessageSubmit}><FontAwesomeIcon icon={faCircleRight} className='submit'/></div>
         </div>
-      </div>
     </div>
     </>
         );
