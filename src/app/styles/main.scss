@@ -21,7 +21,7 @@
             padding: 8px;
             font-size: 14px;
             overflow: auto;
-            z-index: 1;
+            z-index: 10;
             .new-message{
                 display: flex;
                 justify-content: center;
@@ -59,7 +59,7 @@
             }
         }
         .menu-enter {
-            left: -225px;
+            left: -280px;
         }
         
         .menu-enter-active {
@@ -75,12 +75,12 @@
         }
         
         .menu-exit-active {
-            left: -225px;
+            left: -280px;
             transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .menu-exit-done {
-            left: -225px;
+            left: -280px;
         }
     }
     .menu-big {
@@ -129,12 +129,12 @@
             display: flex;          
             align-items: center;
             flex-direction: column;
-            width: 700px;
-            height: 160px;
+            width: 300px;
+            height: 150px;
             background-color: rgb(64,65,79);
             position: absolute;
-            top: 955%;
-            left: 1265%;
+            top: 1120%;
+            left: -225%;
             padding: 20px 0;
             -webkit-box-shadow: 0px 0px 12px 0px rgba(40, 40, 43, 1);
             -moz-box-shadow: 0px 0px 12px 0px rgba(40, 40, 43, 1);
@@ -142,13 +142,20 @@
             border-radius: 6px;
             z-index: 1;
             .modal-text {
-                padding-bottom: 15px;
+                padding-bottom: 10px;
                 .languages {
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
-                    padding-top: 15px;
+                    padding-top: 10px;
+                    .language{
+                        display: flex;
+                        justify-content: center;
+                        margin: 2.5px 0;
+                        width: 100%;
+                        border-radius: 6px;
+                    }
                 }
             }
             .ok-button {
@@ -165,9 +172,7 @@
         }
     }
     .chatgpt-container{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+
         flex: 1;
         margin-top: 60px;
         overflow-y: auto;
@@ -175,6 +180,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-top:250px;
             font-size: 35px;
             font-weight: bold;
             color: rgb(86,88,105);
@@ -199,14 +205,14 @@
                     }
                 }
                 .user-text{
-                    width: 650px;
+                    width: 100%;
                     line-height: 24px;
                 }
             }
             .loading-state{
-                display: flex;
-                justify-content: center;
-                margin-top: 50px;
+             display: flex;
+             justify-content: center;
+             margin-top: 35px;
             }
         }
     }
@@ -293,6 +299,13 @@
     background-color: rgb(52,53,65);
 }
 
+.language:hover {
+    background-color: rgb(52,53,65);
+}
+
+.selected{
+    background-color: rgb(52,53,65);
+}
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 

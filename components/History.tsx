@@ -22,9 +22,16 @@ const History = () => {
     return (
         <div className="menu-container">
             <div className="burger-menu">
+                <CSSTransition
+                    in={isOpen}
+                    timeout={300}
+                    classNames="menu"
+                    unmountOnExit
+                    >
                 <div className="close-button">
                     <FontAwesomeIcon icon={faXmark} onClick={handleClose}/>
                 </div>
+                </CSSTransition>
                 <CSSTransition
                     in={isOpen}
                     timeout={300}
