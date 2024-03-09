@@ -21,6 +21,7 @@ const HistoryComponent = () => {
         setCurrentTitle(uniqueTitle)
         setResponseMessage(null)
         setInputMessage('')
+        console.log(uniqueTitles)
     }
 
 
@@ -29,9 +30,8 @@ const HistoryComponent = () => {
     }
     
     
-
     return (
-            <div className='history-container'>
+        <div className='history-container'>
                 <div className='new-message'>
                     <div onClick={createNewChat} className='new new-message-element'>
                         <div className='plus'>
@@ -44,11 +44,11 @@ const HistoryComponent = () => {
                     <div className='fa-message'>
                         <FontAwesomeIcon icon={faMessage} />
                     </div>
-                    <span>{uniqueTitle && uniqueTitle.length > 25 ? (
-                        `${uniqueTitle.slice(0, 20).charAt(0).toUpperCase() + uniqueTitle.slice(1)}...`
-                    ) : (
-                        uniqueTitle.charAt(0).toUpperCase() + uniqueTitle.slice(1)
-                    )}
+                        <span className="unique-title"> {uniqueTitle && uniqueTitle.length > 25 ? (
+                            `${uniqueTitle.slice(0, 20).charAt(0).toUpperCase() + uniqueTitle.slice(1)}...`
+                        ) : (
+                            `${uniqueTitle.charAt(0).toUpperCase() + uniqueTitle.slice(1)}`
+                        )}
                     </span>
                 </div>
                 )}
